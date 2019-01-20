@@ -41,7 +41,8 @@ namespace $safeprojectname$
                         Location = ResponseCacheLocation.None,
                         NoStore = true
                     });
-            });
+            })
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // Memory Caching and Session
             services.AddDistributedMemoryCache();
