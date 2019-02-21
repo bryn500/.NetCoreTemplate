@@ -3,33 +3,30 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using $safeprojectname$.Models;
 
 namespace $safeprojectname$.Controllers
 {
-    [ResponseCache(CacheProfileName = "Default")]
-    //[Route("")] // prefix
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         [HttpGet("")]
         public IActionResult Index()
         {
-            const string testSessionName = "testSession";
-            var serialisedDate = JsonConvert.SerializeObject(DateTime.Now);
-            HttpContext.Session.SetString(testSessionName, serialisedDate);
-
-            ViewData.Add("Title", "Homepage");
+            ViewData.Add("Title", "SEO Title");
+            MetaTags.Add(new KeyValuePair<string, string>("description", "seo description"));
+            MetaTags.Add(new KeyValuePair<string, string>("keywords", "seo,keywords,list"));
+            ViewBag.MetaNameTags = MetaTags;
 
             return View();
         }
 
-        [HttpGet("problem")]
-        public IActionResult Problem()
+        [HttpGet("/privacy")]
+        public IActionResult Privacy()
         {
-            return StatusCode(500);
+            ViewData.Add("Title", "SEO Title");
+
+            return View();
         }
     }
 }

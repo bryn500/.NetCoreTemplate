@@ -2,38 +2,62 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>@ViewData["Title"]</title>
-    <meta name="description" content="">
+    <!--SEO -->
+    <title>@ViewBag.Title</title>
+    @if (ViewBag.MetaNameTags != null)
+    {
+        foreach (var meta in ViewBag.MetaNameTags)
+        {
+            <meta name="@meta.Key" content="@meta.Value">
+        }
+    }
+    @RenderSection("meta", required: false)
 
-    @* Change the url/status bar colour *@
-    @*<meta name="theme-color" content="#000">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">*@
+    <!--Fav Icons -->
+    <partial name="Partial/_Favicons" />
 
-    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    @*<style>@Html.Raw(System.IO.File.ReadAllText("wwwroot/css/critical.min.css"))</style>*@
-    @RenderSection("Css", required: false)
+    <!--Prefetch DNS lookups -->
+    @*<link rel="dns-prefetch" href="https://fonts.googleapis.com">*@
+
+    <!--Preload fonts and all.css -->
+    @*<link rel="preload" href="~/css/all.css" asp-append-version="true" as="style" />*@
+
+    <!--Inline critical css -->
+    @*<style>@Html.Raw(Utilities.GetInlineFile("/css/critical.css"))</style>*@
+
+    <link rel="stylesheet" href="~/css/all.css" asp-append-version="true" />
 </head>
 <body>
-    <header role="banner">
+    <header>
         <nav>
-            <a asp-controller="Home" asp-action="Index">Home</a>
+            <a asp-controller="Home" asp-action="Index">$safeprojectname$</a>
+
+            <ul>
+                <li>
+                    <a asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li>
+                    <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </li>
+            </ul>
         </nav>
     </header>
 
-    @RenderBody()
+    <partial name="Partial/_CookieConsentPartial" />
 
-    <footer>
-        <p>&copy; 2018</p>
-    </footer>
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
 
+    <!--Footer -->
+    <partial name="Partial/_Footer" />
+
+    <!-- JS -->
+    <partial name="Partial/_InlineJS" />
     <script src="~/js/site.js" asp-append-version="true" async></script>
     @RenderSection("Scripts", required: false)
-
-    @* AddAntiForgeryToken form for ajax *@
-    <form id="__AjaxAntiForgeryForm" action="#" method="post">@Html.AntiForgeryToken()</form>
-
-    <!--Generated: @DateTime.Now.ToString() -->
 </body>
 </html>

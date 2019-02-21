@@ -1,42 +1,67 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
-    <Name>CoreTemplate</Name>
+    <Name>Core Template</Name>
     <Description>Simple template for .net core</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
     <SortOrder>1000</SortOrder>
     <CreateNewFolder>true</CreateNewFolder>
-    <DefaultName>CoreTemplate</DefaultName>
+    <DefaultName>Core Template</DefaultName>
     <ProvideDefaultName>true</ProvideDefaultName>
     <LocationField>Enabled</LocationField>
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
     <Icon>__TemplateIcon.ico</Icon>
     <PreviewImage>__PreviewImage.ico</PreviewImage>
-    <CreateInPlace>true</CreateInPlace>
   </TemplateData>
   <TemplateContent>
-    <Project TargetFileName="MyTemplate.csproj" File="MyTemplate.csproj" ReplaceParameters="true">
+    <Project TargetFileName="Basic.csproj" File="Basic.csproj" ReplaceParameters="true">
       <Folder Name="Properties" TargetFolderName="Properties">
         <ProjectItem ReplaceParameters="true" TargetFileName="launchSettings.json">launchSettings.json</ProjectItem>
       </Folder>
       <Folder Name="wwwroot" TargetFolderName="wwwroot">
-        <Folder Name="css" TargetFolderName="css" />
-        <Folder Name="img" TargetFolderName="img" />
-        <Folder Name="js" TargetFolderName="js" />
+        <Folder Name="css" TargetFolderName="css">
+          <ProjectItem ReplaceParameters="true" TargetFileName="all.css">all.css</ProjectItem>
+        </Folder>
+        <Folder Name="js" TargetFolderName="js">
+          <ProjectItem ReplaceParameters="true" TargetFileName="site.js">site.js</ProjectItem>
+        </Folder>
+        <Folder Name="lib" TargetFolderName="lib" />
         <ProjectItem ReplaceParameters="false" TargetFileName="favicon.ico">favicon.ico</ProjectItem>
       </Folder>
-      <Folder Name="assets" TargetFolderName="assets">
-        <Folder Name="css" TargetFolderName="css" />
-        <Folder Name="js" TargetFolderName="js" />
-        <ProjectItem ReplaceParameters="true" TargetFileName="Readme.txt">Readme.txt</ProjectItem>
-      </Folder>
       <Folder Name="Controllers" TargetFolderName="Controllers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="BaseController.cs">BaseController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="ErrorController.cs">ErrorController.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="HomeController.cs">HomeController.cs</ProjectItem>
       </Folder>
+      <Folder Name="Core" TargetFolderName="Core">
+        <Folder Name="Client" TargetFolderName="Client">
+          <Folder Name="TestClient" TargetFolderName="TestClient">
+            <Folder Name="Model" TargetFolderName="Model" />
+            <ProjectItem ReplaceParameters="true" TargetFileName="ITestClient.cs">ITestClient.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="TestClient.cs">TestClient.cs</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="true" TargetFileName="APIClient.cs">APIClient.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="APIResult.cs">APIResult.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="BaseClient.cs">BaseClient.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="IBaseClient.cs">IBaseClient.cs</ProjectItem>
+        </Folder>
+        <Folder Name="Extensions" TargetFolderName="Extensions">
+          <ProjectItem ReplaceParameters="true" TargetFileName="RequestExtension.cs">RequestExtension.cs</ProjectItem>
+        </Folder>
+        <Folder Name="Services" TargetFolderName="Services">
+          <Folder Name="CacheService" TargetFolderName="CacheService">
+            <ProjectItem ReplaceParameters="true" TargetFileName="CacheService.cs">CacheService.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="ICacheService.cs">ICacheService.cs</ProjectItem>
+          </Folder>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Consts.cs">Consts.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Utilities.cs">Utilities.cs</ProjectItem>
+      </Folder>
       <Folder Name="Models" TargetFolderName="Models">
-        <ProjectItem ReplaceParameters="true" TargetFileName="TestModel.cs">TestModel.cs</ProjectItem>
+        <Folder Name="Config" TargetFolderName="Config">
+          <ProjectItem ReplaceParameters="true" TargetFileName="TestConfig.cs">TestConfig.cs</ProjectItem>
+        </Folder>
       </Folder>
       <Folder Name="Views" TargetFolderName="Views">
         <Folder Name="Error" TargetFolderName="Error">
@@ -45,10 +70,16 @@
         </Folder>
         <Folder Name="Home" TargetFolderName="Home">
           <ProjectItem ReplaceParameters="true" TargetFileName="Index.cshtml">Index.cshtml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Privacy.cshtml">Privacy.cshtml</ProjectItem>
         </Folder>
         <Folder Name="Shared" TargetFolderName="Shared">
+          <Folder Name="Partial" TargetFolderName="Partial">
+            <ProjectItem ReplaceParameters="true" TargetFileName="_CookieConsentPartial.cshtml">_CookieConsentPartial.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="_Favicons.cshtml">_Favicons.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="_Footer.cshtml">_Footer.cshtml</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="_InlineJS.cshtml">_InlineJS.cshtml</ProjectItem>
+          </Folder>
           <ProjectItem ReplaceParameters="true" TargetFileName="_Layout.cshtml">_Layout.cshtml</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="Error.cshtml">Error.cshtml</ProjectItem>
         </Folder>
         <ProjectItem ReplaceParameters="true" TargetFileName="_ViewImports.cshtml">_ViewImports.cshtml</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="_ViewStart.cshtml">_ViewStart.cshtml</ProjectItem>
